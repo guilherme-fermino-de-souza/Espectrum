@@ -1,6 +1,7 @@
-CREATE DATABASE bdRedeSocialAutistas
-use bdRedeSocialAutistas
---DROP Database bdRedeSocialAutistas
+CREATE DATABASE bdIntea
+use bdIntea
+--DROP Database bdIntea
+  
 CREATE TABLE tbAutista(
 idAutista INT PRIMARY KEY IDENTITY(1,1),
 emailAutista VARCHAR(100),
