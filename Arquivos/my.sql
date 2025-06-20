@@ -18,14 +18,14 @@ CREATE TABLE tbUsuario (
   numeroUsuario INT,
   cidadeUsuario VARCHAR(100),
   estadoUsuario VARCHAR(100),
-  tipo_usuario ENUM('admin', 'alistico', 'autista', 'cuidador', 'profissional') NOT NULL,
+  tipo_usuario ENUM('admin', 'alistico', 'autista', 'cuidador', 'profissional') NOT NULL
 ) 
 -- telefones usuário
 CREATE TABLE tbFoneUsuario (
-  idUsuario INT AUTO_INCREMENT PRIMARY KEY,
+  idFoneUsuario INT AUTO_INCREMENT PRIMARY KEY,
   usuario_id INT UNIQUE NOT NULL,
   FOREIGN KEY (usuario_id) REFERENCES tbUsuario(idUsuario) ON DELETE CASCADE
-)
+);
 -- alístico (mais simples de todos)
 CREATE TABLE tbAlistico(
   idAlistico INT AUTO_INCREMENT PRIMARY KEY,
@@ -75,9 +75,9 @@ CREATE TABLE tbPostagem (
 -- mensagem
 CREATE TABLE tbMensagem (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
+    usuario_id INT NOT NULL,
     imagemMensagem VARCHAR(255),
     textoMensagem VARCHAR(1555),
     data_publicacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    FOREIGN KEY (usuario_id) REFERENCES tbUsuario(idUsuario) ON DELETE CASCADE
 );
