@@ -59,25 +59,25 @@ CREATE TABLE tbCuidadorAutista (
     cuidador_id INT NOT NULL,
     autista_id INT NOT NULL,
     PRIMARY KEY (cuidador_id, autista_id),
-    FOREIGN KEY (cuidador_id) REFERENCES users(id) ON DELETE CASCADE,
-    FOREIGN KEY (autista_id) REFERENCES users(id) ON DELETE CASCADE
+    FOREIGN KEY (cuidador_id) REFERENCES tbUsuario(idUsuario) ON DELETE CASCADE,
+    FOREIGN KEY (autista_id) REFERENCES tbUsuario(idUsuario) ON DELETE CASCADE
 )
 -- postagem
 CREATE TABLE tbPostagem (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    tituloPostagem VARCHAR(255)
-    imagemPostagem VARCHAR(255)
-    textoPostagem VARCHAR(1555)
+    usuario_id INT NOT NULL,
+    tituloPostagem VARCHAR(255),
+    imagemPostagem VARCHAR(255),
+    textoPostagem VARCHAR(1555),
     data_publicacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    FOREIGN KEY (usuario_id) REFERENCES tbUsuario(idUsuario) ON DELETE CASCADE
 );
 -- mensagem
 CREATE TABLE tbMensagem (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
-    imagemMensagem VARCHAR(255)
-    textoMensagem VARCHAR(1555)
+    imagemMensagem VARCHAR(255),
+    textoMensagem VARCHAR(1555),
     data_publicacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
